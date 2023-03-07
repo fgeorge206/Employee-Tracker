@@ -1,7 +1,7 @@
 // Import inquirer, mysql and console.table.
 const inquirer = require("inquirer");
 const mysql = require("mysql2");
-const ctable = require("console.table");
+const consoleTable = require("console.table");
 
 const db = mysql.createConnection(
 	{
@@ -80,7 +80,6 @@ function companyViewer() {
 				default:
 					console.log("Exiting company viewer.");
 					process.exit();
-					break;
 			}
 		});
 }
@@ -88,7 +87,7 @@ function companyViewer() {
 function viewAll(sql) {
 	db.promise()
 		.query(sql)
-		.then(([rows, fields]) => {
+		.then(([rows,]) => {
 			console.table(rows);
 		})
 		.catch((err) => {
@@ -288,7 +287,7 @@ function queryDept() {
 	deptNames = [];
 	db.promise()
 		.query(`SELECT * FROM department`)
-		.then(([res, field]) => {
+		.then(([res,]) => {
 			res.forEach((department) => {
 				let depObj = {
 					id: department.id,
@@ -308,7 +307,7 @@ function queryRole() {
 	roleTitles = [];
 	db.promise()
 		.query(`SELECT id, title FROM role`)
-		.then(([res, field]) => {
+		.then(([res,]) => {
 			res.forEach((role) => {
 				let roleObj = {
 					id: role.id,
@@ -328,7 +327,7 @@ function queryEmployee() {
 	employeeNames = [];
 	db.promise()
 		.query(`SELECT id, CONCAT(first_name, " ", last_name) AS employee FROM employee`)
-		.then(([res, field]) => {
+		.then(([res]) => {
 			res.forEach((employee) => {
 				let empObj = {
 					id: employee.id,
@@ -344,11 +343,6 @@ function queryEmployee() {
 }
 
 function init() {
-	console.log(` ___            _                    _____            _           
-| __|_ __  _ __| |___ _  _ ___ ___  |_   _| _ __ _ __| |_____ _ _ 
-| _|| '  \\| '_ \\ / _ \\ || / -_) -_)   | || '_/ _\` / _| / / -_) '_|
-|___|_|_|_| .__/_\\___/\\_, \\___\\___|   |_||_| \\__,_\\__|_\\_\\___|_|
-	  |_|         |__/                                        `);
 	queryDept();
 	queryRole();
 	queryEmployee();

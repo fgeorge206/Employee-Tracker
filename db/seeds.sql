@@ -15,10 +15,10 @@ VALUES ("Customer Service Supervisor", 45000, 1),
     ("Production Technician", 40000, 4);
 INSERT INTO employee(first_name, last_name, role_id, manager_id)
 VALUES ("John", "Doe", 1, NULL),
-    ("Mike", "Chan", 2, 1),
+    ("Mike", "Chen", 2, 1),
     ("Roger", "Smith", 3, 2),
-    ("Ben", "Ten", 3, 2),
+    ("Ben", "Tenz", 3, 2),
     ("Sarah", "Sales", 4, NULL),
-    ("Tori", "Reese", 5, 5),
+    ("Hunter", "Mims", 5, 5),
     ("Stephanie", "Jobs", 6, NULL),
-    ("Wilma", "Fence", 7, 7);
+    ("William", "Bill", 7, 7);
