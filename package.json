@@ -1,11 +1,12 @@
 {
-  "name": "employee-tracker",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+	"name": "employee-tracker",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "node index.js"
+	},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/fgeorge206/Employee-Tracker.git"
@@ -17,11 +18,9 @@
     "url": "https://github.com/fgeorge206/Employee-Tracker/issues"
   },
   "homepage": "https://github.com/fgeorge206/Employee-Tracker#readme",
-  "dependencies": {
-    "console.table": "^0.10.0",
-    "dotenv": "^16.0.3",
-    "inquirer": "^8.2.4",
-    "mysql": "^2.18.1",
-    "mysql2": "^3.2.0"
-  }
+	"dependencies": {
+		"console.table": "^0.10.0",
+		"inquirer": "^8.2.4",
+		"mysql2": "^3.1.0"
+	}
 }

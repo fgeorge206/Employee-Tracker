@@ -1,29 +1,32 @@
--- Remove database if it already exists
-DROP DATABASE IF EXISTS employees_db;
--- Create database
-CREATE DATABASE employees_db;
--- Specify database to use for the following queries
-USE employees_db;
--- Create tables
-CREATE TABLE department (
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(30)
-);
+DROP DATABASE IF EXISTS company_db;
 
-CREATE TABLE role (
+CREATE DATABASE company_db;
+
+USE company_db;
+
+CREATE TABLE department(
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    title VARCHAR(30),
-    salary DECIMAL(10,2),
+    name VARCHAR(30) NOT NULL
+);
+CREATE TABLE role(
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(30) NOT NULL,
+    salary DECIMAL NOT NULL,
     department_id INT,
-    FOREIGN KEY (department_id) REFERENCES department(id) ON DELETE SET NULL
+    FOREIGN KEY (department_id)
+    REFERENCES department(id)
+    ON DELETE CASCADE
 );
-
-CREATE TABLE employee (
+CREATE TABLE employee(
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    first_name VARCHAR(30),
-    last_name VARCHAR(30),
-    role_id INT,
-    FOREIGN KEY (role_id) REFERENCES role(id),
+    first_name VARCHAR(30) NOT NULL,
+    last_name VARCHAR(30) NOT NULL, 
+    role_id INT, 
     manager_id INT DEFAULT NULL,
-    FOREIGN KEY (manager_id) REFERENCES employee(id)
+    FOREIGN KEY (role_id)
+    REFERENCES role(id)
+    ON DELETE CASCADE,
+    FOREIGN KEY (manager_id) 
+    REFERENCES employee(id)
+    ON DELETE SET NULL
 );
