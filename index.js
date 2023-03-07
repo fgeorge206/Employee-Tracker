@@ -3,6 +3,13 @@ const inquirer = require("inquirer");
 const mysql = require("mysql2");
 const consoleTable = require("console.table");
 
+let departments = [];
+let deptNames = [];
+let roles = [];
+let roleTitles = [];
+let employees = [];
+let employeeNames = [];
+
 const db = mysql.createConnection(
 	{
 		host: "localhost",
@@ -25,12 +32,6 @@ const menuOptions = [
 	"Quit",
 ];
 
-let departments = [];
-let deptNames = [];
-let roles = [];
-let roleTitles = [];
-let employees = [];
-let employeeNames = [];
 
 function companyViewer() {
 	inquirer
@@ -78,7 +79,7 @@ function companyViewer() {
 					updateManager();
 					break;
 				default:
-					console.log("Exiting company viewer.");
+					console.log("Exiting.");
 					process.exit();
 			}
 		});
@@ -257,7 +258,7 @@ function updateManager() {
 			},
 			{
 				type: "list",
-				message: "Who should be the new manager for this employee?",
+				message: "Who is the employee'smanager?",
 				name: "manager",
 				choices: employeeNames,
 				when(answer) {
