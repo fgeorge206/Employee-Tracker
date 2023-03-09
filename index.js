@@ -59,17 +59,35 @@ function promptUser(){
 			})
 		}
 		if (results.option === "add role") {
-			db.query("SELECT * FROM employee",function(err,data){
-				if(err) throw err
-				console.table(data)
-				promptUser();
+			inquirer.prompt({
+				type: "input",
+				message: "Please enter the name of the role.",
+				name: "role",
+			}).then(function(results){
+				db.promise()
+					.query(`INSERT INTO role (name) VALUES (?)`, results.role)
+					.then(()=>{
+						console.log(`${results.role} has been added to the database`);
+					})
+					.catch((err)=>{
+						throw err;
+					})
 			})
 		}
 		if (results.option === "add employee") {
-			db.query("SELECT * FROM employee",function(err,data){
-				if(err) throw err
-				console.table(data)
-				promptUser();
+			inquirer.prompt({
+				type: "input",
+				message: "Please enter the name of the employee.",
+				name: "department",
+			}).then(function(results){
+				db.promise()
+					.query(`INSERT INTO employee (name) VALUES (?)`, results.employee)
+					.then(()=>{
+						console.log(`${results.employee} has been added to the database`);
+					})
+					.catch((err)=>{
+						throw err;
+					})
 			})
 		}
 	})
