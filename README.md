@@ -19,7 +19,7 @@ I was able to practice using MySQL and Node.js to create this application.
 ## Usage
 Here is a video gif of the working application
 
-https://drive.google.com/file/d/17_EHyX_b437kVYD_Nj3GUnP7muLT-lI1/view
+https://drive.google.com/file/d/1kA4U13GfWChSSO0iNL4uI8d9S7lfQxwJ/view
 
 ## License
 No license
